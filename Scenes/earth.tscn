@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://qg5xsbt6e1k8"]
+
+[ext_resource type="Texture2D" uid="uid://uesmp81xsttd" path="res://Models/EarthColor.png" id="1_xjxln"]
+[ext_resource type="Texture2D" uid="uid://x1mfklkwelwg" path="res://Models/EarthReflective.png" id="2_cgo8y"]
+[ext_resource type="Texture2D" uid="uid://bh7krvw218esc" path="res://Models/EarthNormal.png" id="3_0rid4"]
+[ext_resource type="ArrayMesh" uid="uid://v464b0t0t3u8" path="res://Models/Spere.obj" id="4_ne7l4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_butei"]
+albedo_texture = ExtResource("1_xjxln")
+metallic_specular = 0.39
+metallic_texture = ExtResource("2_cgo8y")
+roughness = 0.31
+roughness_texture = ExtResource("2_cgo8y")
+normal_enabled = true
+normal_texture = ExtResource("3_0rid4")
+rim_enabled = true
+ao_enabled = true
+heightmap_scale = 1.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_0rid4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_06mxr"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 100.0
+
+[node name="Earth" type="Node3D"]
+
+[node name="Spere" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.43712, -2.39249, 0.84482, 2.36412, 5.50236, 0.367338, -0.921226, 0, 5.92886, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_butei")
+mesh = ExtResource("4_ne7l4")
+
+[node name="Axis" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.91706, -0.398749, 0, 0.398749, 0.91706, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_06mxr")

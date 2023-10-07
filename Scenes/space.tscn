@@ -1,0 +1,522 @@
+[gd_scene load_steps=26 format=3 uid="uid://c1fnunqmo0gyu"]
+
+[ext_resource type="Environment" uid="uid://bm1fgiupm0wve" path="res://Assets/env.tres" id="1_yrymt"]
+[ext_resource type="PackedScene" uid="uid://qg5xsbt6e1k8" path="res://Scenes/earth.tscn" id="2_t2d8t"]
+[ext_resource type="PackedScene" uid="uid://i1o15wjfvdi3" path="res://Scenes/moon.tscn" id="3_5irth"]
+[ext_resource type="Script" path="res://Scripts/Eclipse.gd" id="3_kxh62"]
+[ext_resource type="PackedScene" uid="uid://dcosp3iw1jv70" path="res://Scenes/sun.tscn" id="4_71bhi"]
+[ext_resource type="Script" path="res://Scripts/RotationEarth.gd" id="4_j7rj1"]
+[ext_resource type="Script" path="res://Scripts/OrbitCamera.gd" id="5_pyv7g"]
+[ext_resource type="FontFile" uid="uid://by6kq2lyax2al" path="res://Assets/Roboto-Thin.ttf" id="7_05x3a"]
+[ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="7_6u8km"]
+[ext_resource type="Texture2D" uid="uid://jwfsheon7gql" path="res://Assets/left_button.png" id="9_lvck1"]
+[ext_resource type="Texture2D" uid="uid://bkhg5stuhnutp" path="res://Assets/play_button.png" id="9_se6jv"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="9_xnv0o"]
+[ext_resource type="Texture2D" uid="uid://crjpuab8e3s4i" path="res://Assets/Hamburger.png" id="10_hr20t"]
+[ext_resource type="Texture2D" uid="uid://tbcfg8qrw4ws" path="res://Assets/right_button.png" id="11_7g0el"]
+[ext_resource type="Texture2D" uid="uid://cs7wuxb3lrwwd" path="res://Assets/right_next.png" id="13_av1e0"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_0awhi"]
+inner_radius = 200.0
+outer_radius = 200.1
+rings = 128
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vp6go"]
+radius = 30.2188
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cftvp"]
+bg_color = Color(0.862745, 0.862745, 0.862745, 0.176471)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t21l7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h447x"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.278431)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2c8x5"]
+font = ExtResource("7_05x3a")
+font_size = 40
+
+[sub_resource type="Animation" id="Animation_0p8no"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-323, -0.25, 0, 0.25, 0, 28.0001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-353, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleSideBar:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(21, -0.25, 0, 0.25, 0, -60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToggleSideBar:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(25, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToggleSideBar:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_e43kq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(28.0001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleSideBar:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToggleSideBar:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToggleSideBar:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jkdxt"]
+resource_name = "Close"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/VBoxContainer:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(33, -0.25, 0, 0.25, 0, -332, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -351, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToggleSideBar:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-69, -0.25, 0, 0.25, 0, 21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToggleSideBar:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(25, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToggleSideBar:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ecw3x"]
+_data = {
+"Close": SubResource("Animation_jkdxt"),
+"Open": SubResource("Animation_0p8no"),
+"RESET": SubResource("Animation_e43kq")
+}
+
+[node name="MainScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_yrymt")
+
+[node name="Orbit" type="Node3D" parent="."]
+script = ExtResource("5_pyv7g")
+
+[node name="OrbitCamera" type="Camera3D" parent="Orbit"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -200)
+current = true
+
+[node name="Sun" parent="." instance=ExtResource("4_71bhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1626)
+
+[node name="SunLight" type="DirectionalLight3D" parent="Sun"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1626)
+shadow_enabled = true
+shadow_blur = 2.111
+
+[node name="EarthPivot" type="Node3D" parent="Sun"]
+
+[node name="Earth" parent="Sun/EarthPivot" instance=ExtResource("2_t2d8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1626)
+script = ExtResource("4_j7rj1")
+
+[node name="MoonStuff" type="Node3D" parent="Sun/EarthPivot/Earth"]
+transform = Transform3D(0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MoonOrbit" type="MeshInstance3D" parent="Sun/EarthPivot/Earth/MoonStuff"]
+cast_shadow = 0
+mesh = SubResource("TorusMesh_0awhi")
+skeleton = NodePath("../..")
+
+[node name="MoonPivot" type="Node3D" parent="Sun/EarthPivot/Earth/MoonStuff"]
+transform = Transform3D(0.180897, 0, -0.983502, -1.49012e-08, 1, -5.58794e-09, 0.983502, 2.98023e-08, 0.180897, 0, 0, 0)
+
+[node name="Moon" parent="Sun/EarthPivot/Earth/MoonStuff/MoonPivot" instance=ExtResource("3_5irth")]
+transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 0, -200)
+
+[node name="Detector" type="StaticBody3D" parent="Sun/EarthPivot/Earth"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sun/EarthPivot/Earth/Detector"]
+transform = Transform3D(0.906187, -0.398748, 0.140803, 0.39402, 0.91706, 0.0612229, -0.153538, 7.45058e-09, 0.988143, 0, 0, 0)
+shape = SubResource("SphereShape3D_vp6go")
+
+[node name="Eclipse" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 300)
+script = ExtResource("3_kxh62")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+update_mode = 1
+size = Vector3(2000, 2000, 2000)
+interior = true
+enable_shadows = true
+
+[node name="Stars" parent="." instance=ExtResource("7_6u8km")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.923, 40.345, -43.5601)
+star_count = 38705
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_xnv0o")
+
+[node name="ToggleSideBar" type="Button" parent="UI"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 25.0
+offset_right = 61.0
+offset_bottom = 65.0
+focus_mode = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cftvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t21l7")
+icon = ExtResource("10_hr20t")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h447x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0001
+offset_top = 14.0
+offset_right = -17.9999
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Planet" type="Label" parent="UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Earth"
+label_settings = SubResource("LabelSettings_2c8x5")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_fonts/normal_font = ExtResource("7_05x3a")
+text = "An eclipse is a fascinating celestial event that occurs when one astronomical object, such as a planet or moon, moves into the shadow of another object, casting a temporary darkening or obscuration. A solar eclipse occurs when the Moon passes between the Earth and the Sun, temporarily blocking the Sun's light. This can create various phenomena like partial and total solar eclipses, where the Sun is partially or entirely obscured."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Show Orbits:"
+
+[node name="CheckButton" type="CheckButton" parent="UI/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Show Equator:"
+
+[node name="CheckButton" type="CheckButton" parent="UI/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+
+[node name="Speed" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.0
+offset_top = 25.0
+offset_right = -15.0
+offset_bottom = 76.0
+grow_horizontal = 0
+text = "Earth"
+label_settings = SubResource("LabelSettings_2c8x5")
+horizontal_alignment = 2
+
+[node name="Eclipse" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 78.0
+grow_horizontal = 2
+text = "Eclipse: False"
+label_settings = SubResource("LabelSettings_2c8x5")
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_ecw3x")
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.912037
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ForwardBack" type="Button" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cftvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t21l7")
+icon = ExtResource("9_lvck1")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Pause" type="Button" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cftvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t21l7")
+icon = ExtResource("9_se6jv")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ForwardFront" type="Button" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cftvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t21l7")
+icon = ExtResource("11_7g0el")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ForwardNext" type="Button" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cftvp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t21l7")
+icon = ExtResource("13_av1e0")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="UI/ToggleSideBar" to="UI" method="_on_toggle_side_bar_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/ForwardBack" to="Sun/EarthPivot/Earth" method="_on_forward_back_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/Pause" to="Sun/EarthPivot/Earth" method="_on_pause_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/ForwardFront" to="Sun/EarthPivot/Earth" method="_on_forward_front_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/ForwardNext" to="Sun/EarthPivot/Earth" method="_on_forward_next_pressed"]
